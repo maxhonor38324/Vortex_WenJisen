@@ -1,4 +1,25 @@
-% ... 前面的代码保持不变 ...
+clc;
+clear;
+close all;
+
+%% 参数设置
+lambda = 632.8e-9;       % 波长（He - Ne激光）
+w0 = 1e-3;               % 束腰半径（1mm）
+f = 0.3;                 % 透镜焦距（300mm）
+k = 2*pi/lambda;         % 波数
+
+% 空间网格参数
+N = 50;                % 采样点数
+L = 5e-3;                % 物面尺寸（5mm）
+[x, y] = meshgrid(linspace(-L/2, L/2, N));
+[phi, r] = cart2pol(x, y); % 极坐标
+
+% 定义不同的alpha值
+alphas = [1.5, 1.8, 2.0, 2.2, 2.5, 2.8];
+
+% 创建两个figure对象
+fig_log = figure;
+fig_resized = figure;
 
 % 循环遍历不同的alpha值
 for i = 1:length(alphas)
